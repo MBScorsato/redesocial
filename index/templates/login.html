@@ -1,0 +1,51 @@
+{% extends 'base_index.html' %}
+{% load static %}
+{% block titulo %}Login - TELE TELA {% endblock %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'index/css/login.css' %}">
+
+{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6 text-white" id="left-half">
+            <!-- Conteúdo da primeira metade -->
+            {% for title_img in title_img %}
+                <img src="{{title_img.img.url}}" alt="Descrição da imagem" class="minha-imagem">
+
+            {% endfor %}
+<label class="cadastro"><h1>LOGIN</h1></label>
+            <div class="message">
+            {% if messages %}
+            {% for message in messages %}
+        <div class="alert {{message.tags}}">
+            <center>{{message}}</center>
+        </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+
+            <form action="{% url 'login' %}" method="post"> {% csrf_token %}
+                <input type="text" placeholder="Nome..." name="username"><br><br>
+                <input type="password" placeholder="Senha..." name="password"><br><br>
+                <input type="submit" value="Entrar"><br><br>
+            </form>
+           <label class="cadastrar"><a href="{% url 'cadastro' %}">CADASTRAR</a></label>
+           <label class="esqueci_senha"><a href="{% url 'enviar_email' %}">esqueci minha senha</a></label>
+
+
+        </div>
+        <div class="col-md-6 text-white" id="right-half">
+            <!-- Conteúdo da segunda metade -->
+            {% for title_img2 in title_img2 %}
+                <label class="mensag
+                em_direita"><h2>{{ title_img2.title2 }}</h2></label>
+                <img src="{{title_img2.img2.url}}" alt="Descrição da imagem" class="minha-imagem2">
+                <label class="contato">{{ title_img2.contato }}</label>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'base_plataforma.html' %}
+{% load static %}
+{% block titulo %}TeleTela{% endblock %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'plataforma/css/plataforma.css' %}">
+
+{% endblock %}
+
+{% block body %}
+<!-- Título fixo -->
+    <h1 class="fixed-header">
+        <button type="button" class="btn btn-outline-primary">Perfil</button>
+        <button type="button" class="btn btn-outline-info">Galeria</button>
+        <button type="button" class="btn btn-outline-success">Amigos</button>
+        <button type="button" class="btn btn-outline-warning">^</button>
+        <button type="button" class="btn btn-outline-danger">Sair</button></h1>
+
+    <div class="container-fluid vh-100 mt-5"> <!-- Adicionei margin-top para não sobrepor o h1 fixo -->
+        <div class="row h-100">
+            <!-- Divisão da tela ao meio -->
+            <div class="col-md-6 bg-light">
+                <br><br><h2>Esquerda</h2>
+            </div>
+            <div class="col-md-6 bg-black">
+                <br><br><h2>Direita</h2>
+            </div>
+        </div>
+    </div>
+{% endblock %}

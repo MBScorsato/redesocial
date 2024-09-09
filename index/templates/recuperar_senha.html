@@ -1,0 +1,41 @@
+{% extends 'base_index.html' %}
+{% load static %}
+{% block titulo %}Recuperação de senha{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'index/css/recuperar_senha.css' %}">
+{% endblock %}
+
+{% block body %}
+<br>
+<label class="voltar">
+    <a href="{% url 'login' %}"><h4>Voltar</h4></a>
+</label>
+<hr>
+        <!-- Exibe a imagem abaixo do formulário -->
+        {% for title_img2 in title_img2 %}
+            <img src="{{ title_img2.img2.url }}" alt="Descrição da imagem" class="minha-imagem2">
+        {% endfor %}
+    </div>
+    <div class="container">
+        <h2>Recuperar Senha</h2>
+        <h3>Digite o E-mail cadastrado</h3>
+        <hr>
+            <div class="message">
+            {% if messages %}
+            {% for message in messages %}
+        <div class="alert {{message.tags}}">
+            <center>{{message}}</center>
+        </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+        <form action="{% url 'enviar_email' %}" method="post">
+            {% csrf_token %}
+            <label for="email_recuperar">Email:</label>
+            <input type="email" id="email_recuperar" placeholder="Email para a nova senha" name="email_recuperar">
+            <input type="submit" value="NOVA SENHA">
+        </form>
+
+
+{% endblock %}

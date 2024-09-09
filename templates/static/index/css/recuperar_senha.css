@@ -1,0 +1,77 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #000000; /* Cor de fundo geral */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; /* Organiza o conteúdo em coluna */
+    height: 66vh; /* Altura da tela completa */
+    margin: 0;
+}
+
+h2 {
+    color: red; /* Cor do texto do título */
+    text-align: center;
+}
+
+hr {
+    border: 1px solid #ffffff; /* Cor da linha horizontal */
+    width: 50%;
+    margin: 0 auto 20px;
+}
+
+form {
+    background: #ffffff; /* Cor de fundo do formulário */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra ao redor do formulário */
+    max-width: 350px; /* Largura máxima do formulário */
+    margin: auto; /* Centraliza o formulário horizontalmente */
+}
+
+form input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px; /* Espaço abaixo do campo de email */
+    border: 1px solid #ddd; /* Borda do campo de email */
+    border-radius: 4px; /* Bordas arredondadas */
+    box-sizing: border-box; /* Inclui padding e border na largura total do campo */
+}
+
+form input[type="submit"] {
+    background-color: #007bff; /* Cor de fundo do botão */
+    color: #ffffff; /* Cor do texto do botão */
+    border: none; /* Remove a borda padrão do botão */
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer; /* Mostra o cursor de ponteiro ao passar sobre o botão */
+    font-size: 16px;
+    display: block;
+    width: 100%; /* Largura total do botão */
+}
+
+form input[type="submit"]:hover {
+    background-color: red; /* Cor de fundo do botão ao passar o mouse */
+}
+
+h3 {
+    color: yellow;
+    text-align: center;
+}
+
+.minha-imagem2 {
+    width: 100%;
+    max-width: 100px;  /* Define a largura máxima */
+    height: auto;      /* Mantém a proporção */
+    object-fit:cover;
+    margin-top: 1px;  /* Espaço acima da imagem para separá-la do formulário */
+}
+
+.voltar a {
+    color: #c0c0c0;
+    text-decoration: none; /* Remove o sublinhado padrão do link */
+}
+
+.voltar a:hover {
+    color: red; /* Exemplo de cor para o hover */
+}

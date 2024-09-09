@@ -1,0 +1,88 @@
+body {
+    background-color: #ffffff; /* Fundo preto */
+    font-family: 'Arial', sans-serif;
+    color: #ffffff; /* Cor do texto branca */
+    margin: 0;
+    padding: 0;
+}
+
+#left-half {
+    background-color: #000000; /* Cor de fundo da primeira metade (dark) */
+}
+
+#right-half {
+    background-color: #000000; /* Cor de fundo da segunda metade (secondary) */}
+
+.row {
+    margin: 0;
+    height: 100vh; /* Altura da tela cheia */
+}
+
+.col-md-6 {
+    display: flex;
+    justify-content: center; /* Centraliza horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    text-align: center; /* Centraliza o texto */
+    flex-direction: column; /* Garante que os elementos fiquem um abaixo do outro */
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    background-color: #000000; /* Fundo preto */
+    color: #00FF00; /* Texto verde limão */
+    border: 2px solid #00FF00; /* Borda verde limão */
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 5px; /* Bordas arredondadas */
+    outline: none;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+input[type="submit"] {
+    background-color: #00FF00; /* Fundo verde limão */
+    color: #000000; /* Texto preto */
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #343a40; /* Fundo dark ao passar o mouse */
+    color: #00FF00; /* Texto verde limão ao passar o mouse */
+    border: 2px solid #00FF00;
+}
+.minha-imagem {
+    width: 250px;  /* Define a largura da imagem */
+    height: 140px; /* Define a altura da imagem */
+    object-fit: cover; /* Mantém a proporção, cortando se necessário */
+}
+.minha-imagem2 {
+    width: 290px;  /* Define a largura da imagem */
+    height: 155px; /* Define a altura da imagem */
+    object-fit: cover; /* Mantém a proporção, cortando se necessário */
+}
+.cadastro{
+    color: #ffffff;
+}
+.mensagem_direita{
+    color: #ffffff
+}
+.contato {
+    color: #f0f0f0;       /* Cor do texto em cinza muito claro */
+    font-family: Verdana, Geneva, sans-serif; /* Fonte Verdana */
+}
+.esqueci_senha{
+    color: blue;
+}
+.cadastrar a {
+    color: orange;
+    text-decoration: none; /* Remove o sublinhado padrão do link */
+}
+
+.cadastrar a:hover {
+    color: red; /* Exemplo de cor para o hover */
+}

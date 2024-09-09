@@ -1,0 +1,15 @@
+h1{
+    color: red;
+}
+/* styles.css */
+.fixed-header {
+    position: fixed; /* Fixa o elemento na tela */
+    top: 0; /* Alinha o elemento ao topo */
+    left: 0; /* Alinha o elemento à esquerda */
+    width: 100%; /* Garante que o elemento ocupe toda a largura da tela */
+    z-index: 1030; /* Garante que o elemento fique acima de outros */
+    background-color: #343a40; /* Cor de fundo, ajuste conforme necessário */
+    text-align: center; /* Centraliza o texto */
+    padding: 1rem 0; /* Adiciona padding superior e inferior */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adiciona sombra para destacar */
+}

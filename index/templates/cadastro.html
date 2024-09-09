@@ -1,0 +1,46 @@
+{% extends 'base_index.html' %}
+{% load static %}
+{% block titulo %}Cadastro - TELE TELA {% endblock %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'index/css/cadastro.css' %}">
+
+{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-6 text-white" id="left-half">
+            <!-- Conteúdo da primeira metade -->
+            {% for title_img in title_img %}
+                <img src="{{title_img.img.url}}" alt="Descrição da imagem" class="minha-imagem">
+            <label class="cadastro"><h1>{{title_img.title}}</h1></label>
+            {% endfor %}
+             <div class="message">
+            {% if messages %}
+            {% for message in messages %}
+        <div class="alert {{message.tags}}">
+            <center>{{message}}</center>
+        </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+            <form action="{% url 'cadastro' %}" method="post"> {% csrf_token %}
+                <input type="text" placeholder="Nome..." name="username"><br><br>
+                <input type="email" placeholder="Email..." name="email"><br><br>
+                <input type="password" placeholder="Senha..." name="password"><br><br>
+                <input type="submit" value="cadastrar"><br><br>
+            </form>
+            <label class="entrar"><a href="{% url 'login' %}">LOGIN</a></label>
+        </div>
+        <div class="col-md-6 text-white" id="right-half">
+            <!-- Conteúdo da segunda metade -->
+            {% for title_img2 in title_img2 %}
+                <label class="mensagem_direita"><h2>{{ title_img2.title2 }}</h2></label>
+                <img src="{{title_img2.img2.url}}" alt="Descrição da imagem" class="minha-imagem2">
+                <label class="contato">{{ title_img2.contato }}</label>
+            {% endfor %}
+        </div>
+    </div>
+</div><br><br><br><br><br><br><br><br><hr>
+
+{% endblock %}
