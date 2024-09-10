@@ -13,3 +13,31 @@ h1{
     padding: 1rem 0; /* Adiciona padding superior e inferior */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Adiciona sombra para destacar */
 }
+    @media (max-width: 768px) {
+        /* Em dispositivos móveis, queremos empilhar as colunas */
+        .col-md-6 {
+            width: 100%;
+            position: relative;
+            height: auto;
+        }
+        .fixed-column {
+            position: relative;
+            height: auto;
+        }
+    }
+
+    @media (min-width: 769px) {
+        /* No desktop, a coluna direita permanece fixa */
+        .fixed-column {
+            position: fixed;
+            right: 0;
+            top: 0;
+            height: 100vh;
+            width: 50%;
+        }
+
+        .scroll-column {
+            height: 100vh;
+            overflow-y: auto;
+        }
+    }

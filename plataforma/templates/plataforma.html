@@ -15,15 +15,24 @@
         <button type="button" class="btn btn-outline-warning"> ^ </button>
         <button type="button" class="btn btn-outline-danger">Sair</button></h1>
 
-    <div class="container-fluid vh-100 mt-5"> <!-- Adicionei margin-top para não sobrepor o h1 fixo -->
-        <div class="row h-100">
-            <!-- Divisão da tela ao meio -->
-            <div class="col-md-6 bg-light">
-                <br><br><h2>Esquerda</h2>
-            </div>
-            <div class="col-md-6 bg-black">
-                <br><br><h2>Direita</h2>
-            </div>
+<div class="container-fluid vh-100 mt-5">
+    <div class="row h-100">
+        <!-- Coluna esquerda rolável -->
+        <div class="col-md-6 scroll-column bg-light">
+            <br><br><h2>Esquerda</h2>
+            <p>Conteúdo rolável aqui...</p>
+            <p>Mais conteúdo rolável...</p>
+            <p>Mais conteúdo rolável...</p>
+            <p>Mais conteúdo rolável...</p>
+        </div>
+
+        <!-- Coluna direita fixa no desktop, mas relativa no celular -->
+        <div class="col-md-6 fixed-column bg-black">
+            <br><br><h2 class="text-white">Direita</h2>
+            <p class="text-white">Conteúdo fixo aqui...</p>
         </div>
     </div>
+</div>
+
+
 {% endblock %}
