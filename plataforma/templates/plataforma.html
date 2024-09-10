@@ -13,22 +13,37 @@
         <button type="button" class="btn btn-outline-info">Galeria</button>
         <button type="button" class="btn btn-outline-success">Amigos</button>
         <a href="#"><button type="button" class="btn btn-outline-warning"> &#8593; </button></a>
-        <a href="{% url 'sair' %}"><button type="button" class="btn btn-outline-danger">Sair</button></a></h1>
-
+        <a href="{% url 'sair' %}"><button type="button" class="btn btn-outline-danger">Sair</button></a>
+    </h1>
 <div class="container-fluid vh-100 mt-5">
     <div class="row h-100">
         <!-- Coluna esquerda rolável -->
-        <div class="col-md-6 scroll-column bg-light">
-            <br><br><h2>Esquerda</h2>
-            <p>Conteúdo rolável aqui...</p>
+         <div class="col-md-6" style="background-color: #e9ecef;"><br><br>
+            <br><h2>{{ nome }}, Olá, Bem-Vindo!</h2>
+
+    <div class="container-fluid mt-5">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"> - O que te define?:</h5>
+                        <p class="card-text"><textarea class="form-control" id="exampleTextarea" rows="4" placeholder="eu sou . . . ">{{ menssagem }}</textarea></p>
+                        <a href="#" class="btn btn-primary"> PRESS OK para Editar </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+  <p>Conteúdo rolável aqui...</p>
             <p>Mais conteúdo rolável...</p>
             <p>Mais conteúdo rolável...</p>
-            <p>Mais conteúdo rolável...</p>
+            <p>Mais conteúdo rolável...</p><br><br><br><br><br><hr>
         </div>
 
         <!-- Coluna direita fixa no desktop, mas relativa no celular -->
-        <div class="col-md-6 fixed-column bg-black">
-            <br><br><h2 class="text-white">Direita</h2>
+      <div class="col-md-6 fixed-column bg-black">  <br><br>
+            <h2 class="text-white">Direita</h2>
             <p class="text-white">Conteúdo fixo aqui...</p>
         </div>
     </div>

@@ -1,3 +1,4 @@
 from django.contrib import admin
+from plataforma.models import Menssagem_plataforma
 
-# Register your models here.
+admin.site.register(Menssagem_plataforma)
