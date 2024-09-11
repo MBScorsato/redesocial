@@ -8,23 +8,27 @@ from plataforma.models import Menssagem_plataforma
 
 @login_required(login_url='/auth/cadastro')  # Redireciona para a página de cadastro se não autenticado
 def plataforma(request):
-    nome = request.user  # Captura o nome do usuário logado
+    nome = request.user
 
     if request.method == 'GET':
-
-        msg = Menssagem_plataforma.objects.all()
-        for item in msg:
-            menssagem = item
-        print(menssagem)
-
+        try:
+            msg = Menssagem_plataforma.objects.filter(usuario=request.user)
+            if msg.exists():  # Verifica se há mensagens
+                menssagem = ""
+                for item in msg:
+                    menssagem += str(item) + "\n"  # Adiciona as mensagens à variável 'menssagem'
+            else:
+                menssagem = 'Ola! Estou feliz em conhecer esta plataforma!'  # Se não houver mensagens
+        except:
+            print('Não existiu mensagem')
+            menssagem = 'Olá! Estou feliz em conhecer esta plataforma!'
         return render(request, 'plataforma.html', {'nome': nome, 'menssagem': menssagem, })
 
     elif request.method == 'POST':
-        pass
+
         return render(request, 'plataforma.html', {'nome': nome})
 
 
 def sair(request):
     auth.logout(request)
     return redirect('/auth/cadastro')
-
