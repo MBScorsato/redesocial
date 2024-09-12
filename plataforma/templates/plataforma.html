@@ -18,10 +18,10 @@
 <div class="container-fluid vh-100 mt-5">
     <div class="row h-100">
         <!-- Coluna esquerda rolável -->
-         <div class="col-md-6" style="background-color: #e9ecef;"><br><br>
+         <div class="col-md-6" style="background-color: #e9ecef;"><br>
             <br><h2>{{ nome }}, Olá, Bem-Vindo!</h2>
 
-  <div class="container-fluid mt-5">
+<div class="container-fluid mt-1">
     <div class="row">
         <div class="col-12">
             <div class="card">
@@ -30,16 +30,17 @@
                         {% csrf_token %}
                         <h5 class="card-title"> - O que te define?:</h5>
                         <p class="card-text">
-                            <textarea class="form-control" id="exampleTextarea" name="msg_html" rows="4" placeholder="Fale mais de você . . . ">{{ menssagem }}</textarea>
+                            <textarea class="form-control" id="exampleTextarea" name="msg_html" rows="3" placeholder="Fale mais de você . . . 100 caracteres" maxlength="100">{{ menssagem }}</textarea>
                         </p>
-                        <button type="submit" class="btn w-100 btn-secondary" >PRESS OK para Editar</button>
+                        <button type="submit" class="btn w-100 btn-secondary">PRESS OK para Editar</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
-             <br>
+
+<br>
 <!-- Botão para lançar o modal com largura total -->
 <button type="button" class="btn btn-warning w-100" data-bs-toggle="modal" data-bs-target="#exampleModal">
   O que você tem pra falar hoje?
@@ -54,7 +55,8 @@
         <button type="button" class="btn-close btn-close-dark" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        ...
+        <textarea class="form-control" name="msg_html" rows="4" placeholder="Fale para todos. . . "></textarea>
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-dark" data-bs-dismiss="modal">X Fechar</button>
