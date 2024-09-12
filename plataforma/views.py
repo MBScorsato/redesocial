@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect
 from django.contrib import messages, auth
 from django.contrib.messages import constants
 from django.contrib.auth.decorators import login_required
-
 from plataforma.models import Menssagem_plataforma
 
 
@@ -24,9 +23,30 @@ def plataforma(request):
             menssagem = 'Olá! Estou feliz em conhecer esta plataforma!'
         return render(request, 'plataforma.html', {'nome': nome, 'menssagem': menssagem, })
 
-    elif request.method == 'POST':
+    if request.method == 'POST':
 
-        return render(request, 'plataforma.html', {'nome': nome})
+        if 'msg_html' in request.POST:
+            try:
+                # Filtra as mensagens do usuário conectado
+                msg = Menssagem_plataforma.objects.filter(usuario=request.user).order_by('-id')
+
+                if msg.exists():  # Verifica se há mensagens
+                    # Apaga a última mensagem do usuário
+                    ultima_mensagem = msg.first()  # Pega a última mensagem (mais recente)
+                    ultima_mensagem.delete()
+
+                # Salva a nova mensagem enviada no textarea
+                nova_mensagem = request.POST.get('msg_html')
+                Menssagem_plataforma.objects.create(usuario=request.user, msg=nova_mensagem)
+                menssagem = nova_mensagem  # Exibe a nova mensagem na tela
+
+            except:
+                # Se houver um erro, pode exibir uma mensagem padrão
+                print('Erro ao processar a mensagem')
+                menssagem = 'Olá! Estou feliz em conhecer esta plataforma!'
+            return render(request, 'plataforma.html', {'nome': request.user.username, 'menssagem': menssagem})
+
+    return render(request, 'plataforma.html')
 
 
 def sair(request):

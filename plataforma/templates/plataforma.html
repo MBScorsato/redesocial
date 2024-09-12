@@ -21,20 +21,56 @@
          <div class="col-md-6" style="background-color: #e9ecef;"><br><br>
             <br><h2>{{ nome }}, Olá, Bem-Vindo!</h2>
 
-    <div class="container-fluid mt-5">
-        <div class="row">
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-body">
+  <div class="container-fluid mt-5">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <form action="{% url 'plataforma' %}" method="post">
+                        {% csrf_token %}
                         <h5 class="card-title"> - O que te define?:</h5>
-                        <p class="card-text"><textarea class="form-control" id="exampleTextarea" rows="4" placeholder="eu sou . . . ">{{ menssagem }}</textarea></p>
-                        <a href="#" class="btn btn-primary"> PRESS OK para Editar </a>
-                    </div>
+                        <p class="card-text">
+                            <textarea class="form-control" id="exampleTextarea" name="msg_html" rows="4" placeholder="Fale mais de você . . . ">{{ menssagem }}</textarea>
+                        </p>
+                        <button type="submit" class="btn w-100 btn-secondary" >PRESS OK para Editar</button>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+</div>
+             <br>
+<!-- Botão para lançar o modal com largura total -->
+<button type="button" class="btn btn-warning w-100" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  O que você tem pra falar hoje?
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">O que temos para hoje?</h1>
+        <button type="button" class="btn-close btn-close-dark" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-dark" data-bs-dismiss="modal">X Fechar</button>
+        <button type="button" class="btn btn-dark">- Publicar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
     <hr>
+
+
+
   <p>Conteúdo rolável aqui...</p>
             <p>Mais conteúdo rolável...</p>
             <p>Mais conteúdo rolável...</p>
