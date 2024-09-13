@@ -60,7 +60,16 @@ def plataforma(request):
 
         # Verifica se é o formulário "msg_html_modal" (formulário do modal)
         elif 'msg_html_modal' in request.POST:
+
             nova_mensagem_modal = request.POST.get('msg_html_modal', '').strip()
+
+            # Obtém o último registro do usuário, se existir/ tem que ficar fora dos laços para não sobreescrer
+            ultimo_registro = OQueTemosParaHoje.objects.filter(usuario=request.user).order_by('-id').first()
+            if ultimo_registro:
+                contador = ultimo_registro.contador + 1
+            else:
+                contador = 1
+
             if nova_mensagem_modal:
                 try:
                     # Filtra as mensagens do modal do usuário logado
@@ -69,9 +78,6 @@ def plataforma(request):
                     if msg_modal.exists():  # Verifica se há mensagens do modal
                         # Apaga a última mensagem do modal do usuário logado
                         msg_modal.first().delete()
-
-                    # Verifica quantas mensagens o usuário já postou para contar a nova
-                    contador = OQueTemosParaHoje.objects.filter(usuario=request.user).count() + 1
 
                     # Salva a nova mensagem enviada no modal
                     OQueTemosParaHoje.objects.create(
