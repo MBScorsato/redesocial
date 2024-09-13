@@ -3,89 +3,84 @@
 {% block titulo %}TeleTela{% endblock %}
 {% block head %}
     <link rel="stylesheet" href="{% static 'plataforma/css/plataforma.css' %}">
-
 {% endblock %}
 
 {% block body %}
 <!-- Título fixo -->
-    <h1 class="fixed-header">
-        <button type="button" class="btn btn-outline-primary">Perfil</button>
-        <button type="button" class="btn btn-outline-info">Galeria</button>
-        <button type="button" class="btn btn-outline-success">Amigos</button>
-        <a href="#"><button type="button" class="btn btn-outline-warning"> &#8593; </button></a>
-        <a href="{% url 'sair' %}"><button type="button" class="btn btn-outline-danger">Sair</button></a>
-    </h1>
+<h1 class="fixed-header">
+    <button type="button" class="btn btn-outline-primary">Perfil</button>
+    <button type="button" class="btn btn-outline-info">Galeria</button>
+    <button type="button" class="btn btn-outline-success">Amigos</button>
+    <a href="#"><button type="button" class="btn btn-outline-warning"> &#8593; </button></a>
+    <a href="{% url 'sair' %}"><button type="button" class="btn btn-outline-danger">Sair</button></a>
+</h1>
+
 <div class="container-fluid vh-100 mt-5">
     <div class="row h-100">
         <!-- Coluna esquerda rolável -->
-         <div class="col-md-6" style="background-color: #e9ecef;"><br>
+        <div class="col-md-6" style="background-color: #e9ecef;"><br>
             <br><h2>{{ nome }}, Olá, Bem-Vindo!</h2>
 
-<div class="container-fluid mt-1">
-    <div class="row">
-        <div class="col-12">
-            <div class="card">
-                <div class="card-body">
-                    <form action="{% url 'plataforma' %}" method="post">
-                        {% csrf_token %}
-                        <h5 class="card-title"> - O que te define?:</h5>
-                        <p class="card-text">
-                            <textarea class="form-control" id="exampleTextarea" name="msg_html" rows="3" placeholder="Fale mais de você . . . 100 caracteres" maxlength="100">{{ menssagem }}</textarea>
-                        </p>
-                        <button type="submit" class="btn w-100 btn-secondary">PRESS OK para Editar</button>
-                    </form>
+            <div class="container-fluid mt-1">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <form action="{% url 'plataforma' %}" method="post">
+                                    {% csrf_token %}
+                                    <h5 class="card-title"> - O que te define?:</h5>
+                                    <p class="card-text">
+                                        <textarea class="form-control" id="exampleTextarea" name="msg_html" rows="3" placeholder="Fale mais de você . . . 100 caracteres" maxlength="100">{{ menssagem }}</textarea>
+                                    </p>
+                                    <button type="submit" class="btn w-100 btn-secondary">PRESS OK para Editar</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
 
-<br>
-<!-- Botão para lançar o modal com largura total -->
-<button type="button" class="btn btn-warning w-100" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  O que você tem pra falar hoje?
-</button>
+            <br>
+            <!-- Botão para lançar o modal com largura total -->
+            <button type="button" class="btn btn-warning w-100" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                O que você tem pra falar hoje?
+            </button>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">O que temos para hoje?</h1>
-        <button type="button" class="btn-close btn-close-dark" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <textarea class="form-control" name="msg_html" rows="4" placeholder="Fale para todos. . . "></textarea>
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">O que temos para hoje?</h1>
+                            <button type="button" class="btn-close btn-close-dark" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="{% url 'plataforma' %}" method="post">
+                                {% csrf_token %}
+                                <textarea class="form-control" name="msg_html_modal" rows="4" placeholder="Fale para todos..."></textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-dark" data-bs-dismiss="modal">X Fechar</button>
+                            <button type="submit" class="btn btn-dark">- Publicar</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-dark" data-bs-dismiss="modal">X Fechar</button>
-        <button type="button" class="btn btn-dark">- Publicar</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-
-    <hr>
-
-
-
-  <p>Conteúdo rolável aqui...</p>
+            <hr>
+            <p>Conteúdo rolável aqui...</p>
             <p>Mais conteúdo rolável...</p>
             <p>Mais conteúdo rolável...</p>
             <p>Mais conteúdo rolável...</p><br><br><br><br><br><hr>
         </div>
 
         <!-- Coluna direita fixa no desktop, mas relativa no celular -->
-      <div class="col-md-6 fixed-column bg-black">  <br><br>
+        <div class="col-md-6 fixed-column bg-black"><br><br>
             <h2 class="text-white">Direita</h2>
             <p class="text-white">Conteúdo fixo aqui...</p>
         </div>
     </div>
 </div>
-
 
 {% endblock %}

@@ -85,6 +85,7 @@ def login_(request):
             messages.error(request, 'Usuário ou senha incorretos. Tente novamente ou cadastre-se.')
             return redirect('cadastro')
 
+
 def enviar_email(request):
     if request.method == 'GET':
         title_img2 = ImagemIndex2.objects.all()
