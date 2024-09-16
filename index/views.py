@@ -16,7 +16,6 @@ def cadastro(request):
         title_img2 = ImagemIndex2.objects.all()
         return render(request, 'cadastro.html', {'title_img': title_img, 'title_img2': title_img2})
 
-
     if request.method == 'POST':
 
         username = request.POST.get('username')
