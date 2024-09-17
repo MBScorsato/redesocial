@@ -51,7 +51,7 @@ h1{
 }
 
 /* Estilo para inputs de texto */
-input[type="text"], input[type="password"], input[type="file"] {
+input[type="text"], input[type="password"], input[type="file"], input[type="email"] {
     width: 100%;
     padding: 5px;
     margin: 7px 0;
@@ -64,7 +64,7 @@ input[type="text"], input[type="password"], input[type="file"] {
     transition: all 0.3s ease;
 }
 
-input[type="text"]:focus, input[type="password"]:focus, input[type="file"]:focus {
+input[type="email"]:focus, input[type="text"]:focus, input[type="password"]:focus, input[type="file"]:focus {
     border-color: blue;
     background-color: #333;
     box-shadow: 0 0 5px #6200ea;

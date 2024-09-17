@@ -32,14 +32,16 @@
         </div>
             <hr>
             <span class="badge text-bg-light">Selecione sua foto para o perfil:</span>
-            <input type="file" value="Selecione">
+            <form action="" method="post">
+                <input type="file" value="Selecione" name="imagem">
+            </form>
             <br><br>
             <form action="" method="post">
-                nome: <input type="text" name="nome"><br>
-                email: <input type="text" name="email"><br>
+                nome: <input type="text" name="nome"  disabled><br>
+                email: <input type="email" name="email"><br>
                 nova senha: <input type="password" name="password1"><br>
                 conf. nova senha: <input type="password" name="password2"><br>
-                <input type="submit" value=":: Atualizar ::">
+                <input type="submit" value="Atualize seu perfil">
             </form>
 
             <br><br><br>
