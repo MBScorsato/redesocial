@@ -8,8 +8,8 @@
 {% block body %}
 <!-- Título fixo -->
 <h1 class="fixed-header">
-    <button type="button" class="btn btn-outline-primary">Perfil</button>
-    <button type="button" class="btn btn-outline-info">Galeria</button>
+    <a href="{% url 'plataforma' %}"><button type="button" class="btn btn-outline-light">Início</button></a>
+    <a href="{% url 'perfil' %}"><button type="button" class="btn btn-outline-primary">Perfil</button></a>
     <button type="button" class="btn btn-outline-success">Amigos</button>
     <a href="#"><button type="button" class="btn btn-outline-warning"> &#8593; </button></a>
     <a href="{% url 'sair' %}"><button type="button" class="btn btn-outline-danger">Sair</button></a>
