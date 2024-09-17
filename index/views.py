@@ -20,7 +20,15 @@ def cadastro(request):
 
         username = request.POST.get('username')
         password = request.POST.get('password')
+        password2 = request.POST.get('password2')
         email = request.POST.get('email')
+
+        if password2 != password:
+            print('são diferentes')
+            messages.error(request, 'as senhas são diferentes!')
+            title_img = ImagemIndex.objects.all()
+            title_img2 = ImagemIndex2.objects.all()
+            return render(request, 'cadastro.html', {'title_img': title_img, 'title_img2': title_img2})
 
         # Verificar se todos os campos foram preenchidos
         if not username or not password or not email:

@@ -21,7 +21,9 @@
         <div class="col-md-6" style="background-color: #e9ecef;"><br>
             <br><h5>{{ nome }}, Olá, Bem-Vindo!</h5>
 
-             <div class="message">
+
+
+            <div class="message">
             {% if messages %}
             {% for message in messages %}
         <div class="alert {{message.tags}}">
@@ -32,7 +34,7 @@
         </div>
             <!-- Botão para lançar o modal com largura total -->
             <button type="button" class="btn btn-success w-100" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                Deixe sua mensagem diaria
+                O que está acontecendo hoje?
             </button>
 
             <!-- Modal -->
@@ -67,9 +69,10 @@
                             <p>{{ item.usuario.username }}</p>
                         </div>
                         <div class="card-body text-dark">
-                            <p class="card-text"><h2>{{ item.msg_hoje }}</h2></p>
+                            <p class="card-text"><h5>{{ item.msg_hoje }}</h5></p>
                             <hr>
-                            <p>{{ item.mensagem|date:"H:i" }}</p> <!-- Exibe a hora da mensagem -->
+                            <p><i>{{ item.mensagem|date:"d/m/Y,  H:i" }}</i></p> <!-- Exibe a data completa da mensagem -->
+
                         </div>
                     </div>
                 </div>
@@ -81,11 +84,10 @@
 
         <!-- Coluna direita fixa no desktop, mas relativa no celular -->
         <div class="col-md-6 fixed-column bg-black"><br><br>
-            <h2 class="text-white">Direita</h2>
-            <!-- Coloque seu conteúdo dinâmico ou outra informação relevante aqui -->
-            jjjjj
+
         </div>
     </div>
 </div>
+
 
 {% endblock %}
