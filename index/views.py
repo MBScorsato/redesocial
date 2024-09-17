@@ -1,6 +1,6 @@
 import random
 from django.contrib.auth import authenticate, login, get_user_model
-import traceback  # Para capturar o stack trace completo
+import traceback
 from index.models import ImagemIndex, ImagemIndex2
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
