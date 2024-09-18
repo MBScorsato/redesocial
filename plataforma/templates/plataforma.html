@@ -7,6 +7,7 @@
 
 {% block body %}
 <!-- Título fixo -->
+
 <h1 class="fixed-header">
     <a href="{% url 'plataforma' %}"><button type="button" class="btn btn-outline-light">Início</button></a>
     <a href="{% url 'perfil' %}"><button type="button" class="btn btn-outline-primary">Perfil</button></a>
@@ -19,19 +20,29 @@
     <div class="row h-100">
         <!-- Coluna esquerda rolável -->
         <div class="col-md-6" style="background-color: #e9ecef;"><br>
-            <br><h5>{{ nome }}, Olá, Bem-Vindo!</h5>
-
-
+            <div class="card mb-3" style="max-width: 540px; background-color: #ffffff;">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        {% for imagem in imagem_logado %}
+                            <a href="{% url 'perfil' %}">
+                                <img src="{{ imagem.img.url }}" class="img-fluid rounded-circle" style="width: 90px; height: 90x;">
+                            </a>
+                                {% endfor %}
+                            <label class="nome-perfil">{{ nome }}, Bem Vindo!</label>
+                    </div>
+                </div>
+            </div>
 
             <div class="message">
-            {% if messages %}
-            {% for message in messages %}
-        <div class="alert {{message.tags}}">
-            <center>{{message}}</center>
-        </div>
-            {% endfor %}
-            {% endif %}
-        </div>
+                {% if messages %}
+                {% for message in messages %}
+                <div class="alert {{ message.tags }}">
+                    <center>{{ message }}</center>
+                </div>
+                {% endfor %}
+                {% endif %}
+            </div>
+
             <!-- Botão para lançar o modal com largura total -->
             <button type="button" class="btn btn-success w-100" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 O que está acontecendo hoje?
@@ -49,7 +60,6 @@
                             <form action="{% url 'plataforma' %}" method="post">
                                 {% csrf_token %}
                                 <textarea class="form-control" name="msg_html_modal" rows="4" placeholder="Fale para todos..." maxlength="75"></textarea>
-
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-dark" data-bs-dismiss="modal">X Fechar</button>
@@ -66,28 +76,35 @@
                 <div class="col-12">
                     <div class="card border-dark mb-3">
                         <div class="card-header">
-                            <p>{{ item.usuario.username }}</p>
+                            <img src="{% if item.imagem_perfil_url %}{{ item.imagem_perfil_url }}{% else %}{% static 'img/default-profile.png' %}{% endif %}" class="img-fluid rounded-circle" style="width: 120px; height: 120px;">
+                            {{ item.usuario.username }}
                         </div>
                         <div class="card-body text-dark">
                             <p class="card-text"><h5>{{ item.msg_hoje }}</h5></p>
                             <hr>
-                            <p><i>{{ item.mensagem|date:"d/m/Y,  H:i" }}</i></p> <!-- Exibe a data completa da mensagem -->
-
+                            <p><i>{{ item.mensagem|date:"d/m/Y, H:i" }}</i></p>
                         </div>
                     </div>
                 </div>
-                {% endfor %}
+{% endfor %}
             </div>
 
             <p></p><br><br><br><br><br><hr>
         </div>
 
         <!-- Coluna direita fixa no desktop, mas relativa no celular -->
-        <div class="col-md-6 fixed-column bg-black"><br><br>
+        <div class="col-md-6 fixed-column bg-black"><br><br><br><br><br>
+            murilo scorsato
 
         </div>
     </div>
 </div>
-
-
 {% endblock %}
+
+
+
+
+
+
+
+

@@ -38,4 +38,3 @@ def perfil(request):
 
     # Redireciona para a mesma página após salvar a imagem
     return redirect('perfil')
-
