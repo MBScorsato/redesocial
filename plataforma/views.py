@@ -64,27 +64,39 @@ def plataforma(request):
                     OQueTemosParaHoje.objects.create(usuario=request.user, msg_hoje=nova_mensagem_modal,
                                                      contador=contador)
                     messages.success(request, 'Salvo com sucesso!')
-                    menssagem_modal = nova_mensagem_modal
                 except Exception as e:
                     messages.error(request, 'Erro ao processar a mensagem do modal: {}'.format(e))
-                    menssagem_modal = 'Ainda não há mensagens para hoje!'
             else:
                 messages.warning(request, 'A mensagem não pode estar vazia.')
 
         try:
             msg_mural = OQueTemosParaHoje.objects.all().order_by('-mensagem')
+
+            # Adiciona URLs das imagens de perfil aos itens do mural
+            for item in msg_mural:
+                try:
+                    img = ImagemPerfil.objects.get(usuario=item.usuario)
+                    item.imagem_perfil_url = img.img.url
+                except ImagemPerfil.DoesNotExist:
+                    item.imagem_perfil_url = None
+
+            # Pega a imagem de perfil do usuário logado
+            imagem_logado = ImagemPerfil.objects.filter(usuario=request.user).first()
+            if imagem_logado:
+                imagem_logado_url = imagem_logado.img.url
+            else:
+                imagem_logado_url = None
+
         except Exception as e:
             messages.error(request, 'Erro ao recuperar mensagens do mural: {}'.format(e))
             msg_mural = []
-        return render(request, 'plataforma.html', {'nome': nome, 'msg_mural': msg_mural})
+            imagem_logado_url = None
 
-    msg_mural = OQueTemosParaHoje.objects.all().order_by('-mensagem')
-    # return principal do post
-
-    return render(request, 'plataforma.html', {
-                                               'msg_mural': msg_mural,
-
-                                               })
+        return render(request, 'plataforma.html', {
+            'nome': nome,
+            'msg_mural': msg_mural,
+            'imagem_logado_url': imagem_logado_url,
+        })
 
 
 def sair(request):

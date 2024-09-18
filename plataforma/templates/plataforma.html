@@ -22,15 +22,21 @@
         <div class="col-md-6" style="background-color: #e9ecef;"><br>
             <div class="card mb-3" style="max-width: 540px; background-color: #ffffff;">
                 <div class="row g-0">
-                    <div class="col-md-4">
-                        {% for imagem in imagem_logado %}
+                   <div class="col-md-4">
+                        <a href="{% url 'perfil' %}">
+                            {% for imagem in imagem_logado %}
                             <a href="{% url 'perfil' %}">
                                 <img src="{{ imagem.img.url }}" class="img-fluid rounded-circle" style="width: 90px; height: 90x;">
                             </a>
                                 {% endfor %}
-                            <label class="nome-perfil">{{ nome }}, Bem Vindo!</label>
-                    </div>
-                </div>
+                            {% if imagem_logado_url %}
+                                <img src="{{ imagem_logado_url }}" class="img-fluid rounded-circle" style="width: 90px; height: 90px;">
+                            {% endif %}
+
+                        </a>
+                        <label class="nome-perfil">{{ nome }}, Bem Vindo!</label>
+</div>
+      </div>
             </div>
 
             <div class="message">
@@ -99,8 +105,10 @@
         </div>
     </div>
 </div>
-{% endblock %}
 
+
+
+{% endblock %}
 
 
 
