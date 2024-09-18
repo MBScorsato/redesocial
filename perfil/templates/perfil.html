@@ -18,8 +18,25 @@
 <div class="container-fluid vh-100 mt-5">
     <div class="row h-100">
         <!-- Coluna esquerda rolável -->
-        <div class="col-md-6" style="background-color: #e9ecef;"><br>
-            <br><h5>{{ nome }}, Editar Perfil</h5>
+        <div class="col-md-6" style="background-color: #e9ecef;">
+
+<br>
+<div class="card mb-3" style="max-width: 540px;">
+    <div class="row g-0">
+        <div class="col-md-4"><br>
+            {% for imagem in img %}
+            <img src="{{ imagem.img.url }}" class="img-fluid rounded-circle" style="width: 120px; height: 120px;">
+            {% endfor %}<label class="nome-perfil">{{ nome }}, Editar Perfil</label>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
 
             <div class="message">
             {% if messages %}
@@ -30,12 +47,13 @@
             {% endfor %}
             {% endif %}
         </div>
-            <hr>
+
             <span class="badge text-bg-light">Selecione sua foto para o perfil:</span>
-            <form action="" method="post">
-                <input type="file" value="Selecione" name="imagem">
+            <form action="{% url 'perfil' %}" method="post" enctype="multipart/form-data">{% csrf_token %}
+                <input type="file" name="imagem">
+                <input type="submit" value="Confirmar envio de arquivo">
             </form>
-            <br><br>
+            <hr><i>Edição de conta:</i>
             <form action="" method="post">
                 nome: <input type="text" name="nome"  disabled><br>
                 email: <input type="email" name="email"><br>
@@ -44,7 +62,7 @@
                 <input type="submit" value="Atualize seu perfil">
             </form>
 
-            <br><br><br>
+            <br><br><br><br><br><hr>
         <!-- Coluna direita fixa no desktop, mas relativa no celular -->
         <div class="col-md-6 fixed-column bg-black"><br><br>
 

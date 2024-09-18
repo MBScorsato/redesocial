@@ -1,3 +1,4 @@
 from django.contrib import admin
+from perfil.models import ImagemPerfil
 
-# Register your models here.
+admin.site.register(ImagemPerfil)
