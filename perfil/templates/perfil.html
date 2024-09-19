@@ -1,20 +1,22 @@
 {% extends 'base_perfil.html' %}
 {% load static %}
-{% block titulo %}Perfil{% endblock %}
+{% block titulo %}Perfil - GramLineWeb{% endblock %}
 {% block head %}
     <link rel="stylesheet" href="{% static 'plataforma/css/plataforma.css' %}">
+
 {% endblock %}
 
 {% block body %}
 <!-- Título fixo -->
+
 <h1 class="fixed-header">
     <a href="{% url 'plataforma' %}"><button type="button" class="btn btn-outline-light">Início</button></a>
-    <button type="button" class="btn btn-outline-primary">Perfil</button>
+    <a href="{% url 'perfil' %}"><button type="button" class="btn btn-outline-primary">Perfil</button></a>
     <button type="button" class="btn btn-outline-success">Amigos</button>
     <a href="#"><button type="button" class="btn btn-outline-warning"> &#8593; </button></a>
     <a href="{% url 'sair' %}"><button type="button" class="btn btn-outline-danger">Sair</button></a>
-</h1>
-
+    GramLineWeb
+</h1><br><hr>
 <div class="container-fluid vh-100 mt-5">
     <div class="row h-100">
         <!-- Coluna esquerda rolável -->
@@ -23,7 +25,7 @@
                 <div class="row g-0">
                     <div class="col-md-4"><br>
                         {% for imagem in img %}
-                        <img src="{{ imagem.img.url }}" class="img-fluid rounded-circle" style="width: 90px; height: 90px;">
+                        <img src="{{ imagem.img.url }}" class="img-fluid rounded-circle" style="width: 80px; height: 80px;">
                         {% endfor %}
                         <label class="nome-perfil">{{ nome }}, Editar Perfil</label>
                     </div>
@@ -48,7 +50,7 @@
             <hr><i>Edição de conta:</i>
             <form action="" method="post" enctype="multipart/form-data">
     {% csrf_token %}
-    nome: <input type="text" name="nome" disabled value="{{ nome }}"><br>
+    nome(seu nome é único): <input type="text" name="nome" disabled value="{{ nome }}"><br>
     email: <input type="email" name="email" value="{{ email }}"><br>
     nova senha: <input type="password" name="password1"><br>
     conf. nova senha: <input type="password" name="password2"><br>

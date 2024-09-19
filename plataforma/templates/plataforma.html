@@ -1,6 +1,6 @@
 {% extends 'base_plataforma.html' %}
 {% load static %}
-{% block titulo %}TeleTela{% endblock %}
+{% block titulo %}GramLineWeb{% endblock %}
 {% block head %}
     <link rel="stylesheet" href="{% static 'plataforma/css/plataforma.css' %}">
 {% endblock %}
@@ -14,6 +14,8 @@
     <button type="button" class="btn btn-outline-success">Amigos</button>
     <a href="#"><button type="button" class="btn btn-outline-warning"> &#8593; </button></a>
     <a href="{% url 'sair' %}"><button type="button" class="btn btn-outline-danger">Sair</button></a>
+    GramLineWeb
+
 </h1>
 
 <div class="container-fluid vh-100 mt-5">
@@ -23,14 +25,14 @@
             <div class="card mb-3" style="max-width: 540px; background-color: #ffffff;">
                 <div class="row g-0">
                    <div class="col-md-4">
-                        <a href="{% url 'perfil' %}">
+                        <a href="{% url 'perfil' %}"><hr>
                             {% for imagem in imagem_logado %}
                             <a href="{% url 'perfil' %}">
-                                <img src="{{ imagem.img.url }}" class="img-fluid rounded-circle" style="width: 90px; height: 90x;">
+                                <img src="{{ imagem.img.url }}" class="img-fluid rounded-circle" style="width: 80px; height: 80x;">
                             </a>
                                 {% endfor %}
                             {% if imagem_logado_url %}
-                                <img src="{{ imagem_logado_url }}" class="img-fluid rounded-circle" style="width: 90px; height: 90px;">
+                                <img src="{{ imagem_logado_url }}" class="img-fluid rounded-circle" style="width: 80px; height: 80px;">
                             {% endif %}
 
                         </a>
