@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'index',
     'plataforma',
     'perfil',
+    'amigos',
 
 
 ]
