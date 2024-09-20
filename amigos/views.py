@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from django.shortcuts import render
 from perfil.models import ImagemPerfil
+from django.db.models import Q
 
 
 def amigos(request):
@@ -28,7 +29,42 @@ def amigos(request):
         })
 
     elif request.method == 'POST':
+
+        # Obtém o valor digitado no campo de busca
+
+        search_query = request.POST.get('search')
+
+        # Filtra os usuários pelo nome de usuário
+
+        if search_query:
+
+            usuarios = User.objects.filter(Q(username__icontains=search_query))
+
+        else:
+
+            usuarios = User.objects.all()
+
+        # Monta a lista de usuários com suas respectivas imagens
+
+        usuarios_com_imagem = []
+
+        for usuario in usuarios:
+
+            try:
+
+                imagem = ImagemPerfil.objects.get(usuario=usuario)
+
+            except ImagemPerfil.DoesNotExist:
+
+                imagem = None
+
+            usuarios_com_imagem.append({'usuario': usuario, 'imagem': imagem})
+
         return render(request, 'amigos.html', {
-            'nome': nome,
+
+            'nome': request.user.username,
+
             'usuarios_com_imagem': usuarios_com_imagem,
+
         })
+
