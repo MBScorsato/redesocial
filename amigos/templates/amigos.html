@@ -2,12 +2,10 @@
 {% load static %}
 {% block titulo %}GramLineWeb{% endblock %}
 {% block head %}
-    <link rel="stylesheet" href="{% static 'plataforma/css/plataforma.css' %}">
+    <link rel="stylesheet" href="{% static 'amigos/css/amigos.css' %}">
 {% endblock %}
 
 {% block body %}
-<!-- Título fixo -->
-
 <h1 class="fixed-header">
     <a href="{% url 'plataforma' %}"><button type="button" class="btn btn-outline-light">Início</button></a>
     <a href="{% url 'perfil' %}"><button type="button" class="btn btn-outline-primary">Perfil</button></a>
@@ -15,56 +13,43 @@
     <a href="#"><button type="button" class="btn btn-outline-warning"> &#8593; </button></a>
     <a href="{% url 'sair' %}"><button type="button" class="btn btn-outline-danger">Sair</button></a>
     GramLineWeb
-
 </h1>
 
 <div class="container-fluid vh-100 mt-5">
     <div class="row h-100">
-        <!-- Coluna esquerda rolável -->
         <div class="col-md-6" style="background-color: #e9ecef;"><br>
             <div class="card mb-3" style="max-width: 540px; background-color: #ffffff;"><br>
-<nav class="navbar bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand">Procure pelos amigos</a>
-    <form class="d-flex" role="search" method="post" action="{% url 'amigos' %}">{% csrf_token %}
-      <input class="form-control me-2" type="search" placeholder="digite o o nome . . ." aria-label="Search">
-      <button class="btn btn-outline-success" type="submit">Procurar</button>
-    </form>
-  </div>
-</nav>
+                <nav class="navbar bg-body-tertiary">
+                    <div class="container-fluid">
+                        <a class="navbar-brand">Procure pelos amigos</a>
+                        <form class="d-flex" role="search" method="post" action="{% url 'amigos' %}">{% csrf_token %}
+                            <input class="form-control me-2" type="search" placeholder="digite o nome . . ." aria-label="Search">
+                            <button class="btn btn-outline-success" type="submit">Procurar</button>
+                        </form>
+                    </div>
+                </nav>
 
-            <div class="message">
-                {% if messages %}
-                {% for message in messages %}
-                <div class="alert {{ message.tags }}">
-                    <center>{{ message }}</center>
-                </div>
+                {% for item in usuarios_com_imagem %}
+                    <div class="usuario">
+                        <p class="nome">{{ item.usuario.username }}
+                        {% if item.imagem %}
+                            <img src="{{ item.imagem.img.url }}" class="img-fluid rounded-circle" alt="Foto de perfil" style="width: 90px; height: 90px;">
+
+                        </p>
+                        {% else %}
+                        <p><i>sem foto</i></p>
+                        {% endif %}
+                    </div>
+                    <hr>
                 {% endfor %}
-                {% endif %}
             </div>
-
-
-
-            </div>
-
-            <p></p><br><br><br><br><br><hr>
         </div>
 
-        <!-- Coluna direita fixa no desktop, mas relativa no celular -->
-        <div class="col-md-6 fixed-column bg-black"><br><br><br><br><br>
+        <div class="col-md-6 fixed-column bg-black">
+            <br><br><br><br><br>
             murilo scorsato
-
         </div>
     </div>
 </div>
 
-
-
 {% endblock %}
-
-
-
-
-
-
-

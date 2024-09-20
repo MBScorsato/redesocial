@@ -7,5 +7,5 @@ class ImagemPerfil(models.Model):
     img = models.FileField(upload_to="img_perfil")
 
     def __str__(self):
-        return self.usuario.username  # Exibe o nome de usuário no método __str__
+        return self.usuario.username
 
