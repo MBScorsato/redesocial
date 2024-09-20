@@ -12,7 +12,7 @@
 <h1 class="fixed-header">
     <a href="{% url 'plataforma' %}"><button type="button" class="btn btn-outline-light">Início</button></a>
     <a href="{% url 'perfil' %}"><button type="button" class="btn btn-outline-primary">Perfil</button></a>
-    <a href="{% url 'amigos' %}"><button type="button" class="btn btn-outline-success">Amigos</button></a>
+    <a href="{% url 'amigos' %}"><button type="button" class="btn btn-outline-success">Procurar</button></a>
     <a href="#"><button type="button" class="btn btn-outline-warning"> &#8593; </button></a>
     <a href="{% url 'sair' %}"><button type="button" class="btn btn-outline-danger">Sair</button></a>
     GramLineWeb
@@ -27,7 +27,8 @@
                         {% for imagem in img %}
                         <img src="{{ imagem.img.url }}" class="img-fluid rounded-circle" style="width: 80px; height: 80px;">
                         {% endfor %}
-                        <label class="nome-perfil">{{ nome }}, Editar Perfil</label>
+                        <span class="badge rounded-pill text-bg-light"><label class="nome-perfil">{{ nome }}, Edição de perfil</label></span>
+
                     </div>
                 </div>
             </div>
@@ -45,7 +46,8 @@
             <span class="badge text-bg-light">Selecione sua foto para o perfil:</span>
             <form action="{% url 'perfil' %}" method="post" enctype="multipart/form-data">{% csrf_token %}
                 <input type="file" name="imagem">
-                <input type="submit" value="Confirmar envio de arquivo">
+                <input type="submit" value="Confirme sua foto de perfil"> -
+                <button type="button" class="btn btn-secondary"> GALERIA </button>
             </form>
             <hr><i>Edição de conta:</i>
             <form action="" method="post" enctype="multipart/form-data">
@@ -56,6 +58,11 @@
     conf. nova senha: <input type="password" name="password2"><br>
     <input type="submit" value="Atualize seu perfil">
 </form>
+            <hr>
+            <button type="button" class="btn btn-danger">Excluir Perfil</button>
+            <button type="button" class="btn btn-secondary"> GALERIA </button>
+            <button type="button" class="btn btn-info">Ranking</button>
+            <hr>
 
            <br> <br><br><br><br><br><hr>
         </div>

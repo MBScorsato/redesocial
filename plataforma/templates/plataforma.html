@@ -11,9 +11,9 @@
 <h1 class="fixed-header">
     <a href="{% url 'plataforma' %}"><button type="button" class="btn btn-outline-light">Início</button></a>
     <a href="{% url 'perfil' %}"><button type="button" class="btn btn-outline-primary">Perfil</button></a>
-    <a href="{% url 'amigos' %}"><button type="button" class="btn btn-outline-success">Amigos</button></a>
+    <a href="{% url 'amigos' %}"><button type="button" class="btn btn-outline-success">Procurar</button></a>
     <a href="#"><button type="button" class="btn btn-outline-warning"> &#8593; </button></a>
-    <a href="{% url 'sair' %}"><button type="button" class="btn btn-outline-danger">Sair</button></a>
+    <a href="#"><button type="button" class="btn btn-outline-danger">Ranking</button></a>
     GramLineWeb
 
 </h1>
@@ -36,7 +36,8 @@
                             {% endif %}
 
                         </a>
-                        <label class="nome-perfil">{{ nome }}, Bem Vindo!</label>
+                       <span class="badge rounded-pill text-bg-light"><label class="nome-perfil">{{ nome }}, Bem Vindo!</label></span>
+
 </div>
       </div>
             </div>
