@@ -81,10 +81,13 @@ def perfil(request):
 
 
 def excluir(request):
+    nome = request.user.username
     if request.method == 'GET':
         return render(request, 'excluir.html')
 
     elif request.method == 'POST':
-        return render(request, 'excluir.html')
+        user = User.objects.get(username=nome)
+        user.delete()
+        return render(request, 'cadastro.html')
 
 
