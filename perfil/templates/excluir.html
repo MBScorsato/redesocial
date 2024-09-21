@@ -1,0 +1,53 @@
+{% extends 'base_perfil.html' %}
+{% load static %}
+{% block titulo %}Perfil - GramLineWeb{% endblock %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'plataforma/css/plataforma.css' %}">
+
+{% endblock %}
+
+{% block body %}
+<!-- Título fixo -->
+
+<h1 class="fixed-header">
+    <a href="{% url 'perfil' %}"><button type="button" class="btn btn-outline-primary">Perfil</button></a>
+
+    <a href="{% url 'sair' %}"><button type="button" class="btn btn-outline-danger">Sair</button></a>
+    GramLineWeb
+</h1><br><hr>
+<div class="container-fluid vh-100 mt-5">
+    <div class="row h-100">
+        <!-- Coluna esquerda rolável -->
+        <div class="col-md-6" style="background-color: #e9ecef;">
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-4">
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="message">
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert {{message.tags}}">
+                            <center>{{message}}</center>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+
+<h1> Excluir conta </h1>
+            <input type="password" placeholder="senha">
+           <textarea placeholder="Conte-nos o porquê da exclusão da conta" cols="44" rows="5"></textarea>
+
+            <input value="Tem certeza que dejesa excluir?" name="excluir" type="submit">
+
+           <br> <br><br><br><br><br><hr>
+        </div>
+        <!-- Coluna direita fixa no desktop, mas relativa no celular -->
+        <div class="col-md-6 fixed-column bg-black"><br><br>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -9,3 +9,9 @@ class ImagemPerfil(models.Model):
     def __str__(self):
         return self.usuario.username
 
+
+class ExcluirMensagem(models.Model):
+    msg_ex = models.TextField()
+
+    def __str__(self):
+        return self.msg_ex

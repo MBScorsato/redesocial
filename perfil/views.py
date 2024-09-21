@@ -79,3 +79,12 @@ def perfil(request):
 
         return redirect('perfil')
 
+
+def excluir(request):
+    if request.method == 'GET':
+        return render(request, 'excluir.html')
+
+    elif request.method == 'POST':
+        return render(request, 'excluir.html')
+
+
