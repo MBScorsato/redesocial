@@ -1,6 +1,6 @@
 {% extends 'base_perfil.html' %}
 {% load static %}
-{% block titulo %}Perfil - GramLineWeb{% endblock %}
+{% block titulo %}Perfil/Excluir - GramLineWeb{% endblock %}
 {% block head %}
     <link rel="stylesheet" href="{% static 'plataforma/css/plataforma.css' %}">
 {% endblock %}
@@ -38,8 +38,8 @@
             <form method="post" action="{% url 'excluir' %}">
                 {% csrf_token %}
 
-                <input type="password" name="senha" placeholder="Senha" required><br><br>
-                <textarea name="motivo" placeholder="Conte-nos o porquê da exclusão da conta" cols="44" rows="5" required></textarea><br><br>
+                <input type="password" placeholder="Digite a senha para excluir" name="senha" placeholder="Senha" required><br><br>
+                <textarea name="motivo" placeholder="Conte-nos o porquê da exclusão da conta" cols="44" rows="5"></textarea><br><br>
                 <button type="submit" class="btn btn-danger">Tem certeza que deseja excluir?</button>
             </form>
 

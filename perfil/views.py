@@ -3,7 +3,7 @@ from django.contrib.auth.hashers import make_password
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.shortcuts import redirect, render
-from perfil.models import ImagemPerfil
+from perfil.models import ImagemPerfil, ExcluirMensagem
 from django.contrib.auth import update_session_auth_hash
 
 
@@ -82,12 +82,27 @@ def perfil(request):
 
 def excluir(request):
     nome = request.user.username
+
     if request.method == 'GET':
         return render(request, 'excluir.html')
 
     elif request.method == 'POST':
-        user = User.objects.get(username=nome)
-        user.delete()
-        return render(request, 'cadastro.html')
+        senha = request.POST.get('senha')  # Senha fornecida pelo usuário
+        motivo = request.POST.get('motivo')  # Motivo fornecido pelo usuário
 
+        if not motivo:
+            motivo = 'Nada Consta'
 
+        # Verifica se a senha fornecida está correta
+        if request.user.check_password(senha):
+            # Salva a mensagem de exclusão no modelo ExcluirMensagem
+            ExcluirMensagem.objects.create(msg_ex=f'Usuário {nome} excluiu a conta. Motivo: {motivo}')
+
+            # Se a senha estiver correta, o usuário é excluído
+            user = User.objects.get(username=nome)
+            user.delete()
+            # Redireciona para uma página de sucesso após a exclusão
+            return redirect('login')  # Redirecione para login ou outra página existente
+        else:
+            # Senha incorreta, mostra uma mensagem de erro
+            return render(request, 'excluir.html', {'erro': 'Senha incorreta. Por favor, tente novamente.'})
