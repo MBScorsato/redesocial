@@ -47,7 +47,7 @@
             <form action="{% url 'perfil' %}" method="post" enctype="multipart/form-data">{% csrf_token %}
                 <input type="file" name="imagem">
                 <input type="submit" value="Confirme sua foto de perfil"> -
-                <button type="button" class="btn btn-secondary"> GALERIA </button>
+                 <a href="{% url 'galeria' %}"><button type="button" class="btn btn-secondary"> GALERIA </button></a>
             </form>
             <hr><i>Edição de conta:</i>
             <form action="" method="post" enctype="multipart/form-data">
@@ -60,7 +60,7 @@
 </form>
             <hr>
             <a href="{% url 'excluir' %}"><button type="button" class="btn btn-danger">Excluir Perfil</button></a>
-            <button type="button" class="btn btn-secondary"> GALERIA </button>
+            <a href="{% url 'galeria' %}"><button type="button" class="btn btn-secondary"> GALERIA </button></a>
             <button type="button" class="btn btn-info">Ranking</button>
             <hr>
 

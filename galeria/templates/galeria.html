@@ -1,0 +1,49 @@
+{% extends 'base_galeria.html' %}
+{% load static %}
+{% block titulo %}Galeria - GramLineWeb{% endblock %}
+{% block head %}
+    <link rel="stylesheet" href="{% static 'plataforma/css/plataforma.css' %}">
+{% endblock %}
+
+{% block body %}
+<!-- Título fixo -->
+
+<h1 class="fixed-header">
+    <a href="{% url 'plataforma' %}"><button type="button" class="btn btn-outline-light">Início</button></a>
+    <a href="{% url 'perfil' %}"><button type="button" class="btn btn-outline-primary">Perfil</button></a>
+    GALERIA
+
+</h1>
+
+
+            <div class="message">
+                {% if messages %}
+                {% for message in messages %}
+                <div class="alert {{ message.tags }}">
+                    <center>{{ message }}</center>
+                </div>
+                {% endfor %}
+                {% endif %}
+            </div>
+
+            <br><br><br>Nome logado<hr>
+
+909~-~~0~0~0~0~0~0~0
+       <!-- Coluna direita fixa no desktop, mas relativa no celular -->
+        <div class="col-md-6 fixed-column bg-black"><br><br><br><br><br>
+            murilo scorsato
+
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}
+
+
+
+
+
+
+

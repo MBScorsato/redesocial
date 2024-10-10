@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'plataforma',
     'perfil',
     'amigos',
+    'galeria',
 
 
 ]

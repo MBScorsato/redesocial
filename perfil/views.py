@@ -102,7 +102,8 @@ def excluir(request):
             user = User.objects.get(username=nome)
             user.delete()
             # Redireciona para uma página de sucesso após a exclusão
-            return redirect('login')  # Redirecione para login ou outra página existente
+            return redirect('cadastro')
         else:
             # Senha incorreta, mostra uma mensagem de erro
-            return render(request, 'excluir.html', {'erro': 'Senha incorreta. Por favor, tente novamente.'})
+            messages.error(request, "Senha errada!")
+            return render(request, 'excluir.html')

@@ -9,7 +9,8 @@ urlpatterns = [
     path('auth/', include('index.urls')),
     path('plataforma/', include('plataforma.urls')),
     path('plataforma/', include('amigos.urls')),
-    path('plataforma/', include('perfil.urls'))
+    path('plataforma/', include('perfil.urls')),
+    path('plataforma/', include('galeria.urls')),
 
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
