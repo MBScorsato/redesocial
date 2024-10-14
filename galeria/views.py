@@ -2,7 +2,14 @@ from django.shortcuts import render
 
 
 def galeria(request):
+
     if request.method == 'GET':
-        return render(request, 'galeria.html')
+        nome = request.user.username
+        return render(request, 'galeria.html', {'nome': nome,
+
+                                                })
     elif request.method == 'POST':
-        return render(request, 'galeria.html')
+        nome = request.user.username
+        return render(request, 'galeria.html', {'nome': nome,
+
+                                                })

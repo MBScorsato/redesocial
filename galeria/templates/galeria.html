@@ -2,6 +2,9 @@
 {% load static %}
 {% block titulo %}Galeria - GramLineWeb{% endblock %}
 {% block head %}
+    <!-- Link para o Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
     <link rel="stylesheet" href="{% static 'plataforma/css/plataforma.css' %}">
 {% endblock %}
 
@@ -26,9 +29,35 @@
                 {% endif %}
             </div>
 
-            <br><br><br>Nome logado<hr>
+            <br><br><br>{{ nome }}, sua galeria<hr>
+<div class="container mt-4">
+    <!-- Card com bordas vermelhas -->
+    <div class="card border-danger">
+        <div class="card-header text-danger">
+            <i class="fa-solid fa-camera-retro fa-1x"> Minhas fotos </i>
+        </div>
+    </div>
+</div>
 
-909~-~~0~0~0~0~0~0~0
+<div class="container mt-4">
+    <!-- Card com bordas vermelhas -->
+    <div class="card border-danger">
+        <div class="card-header text-danger">
+            <i class="fa-solid fa-ban"> Somente Amigos </i>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-4">
+    <!-- Card com bordas vermelhas -->
+    <div class="card border-danger">
+        <div class="card-header text-danger">
+            <i class="fa-solid fa-money-check-dollar"> Mídias Especiais </i>
+        </div>
+    </div>
+</div>
+
+<hr>
        <!-- Coluna direita fixa no desktop, mas relativa no celular -->
         <div class="col-md-6 fixed-column bg-black"><br><br><br><br><br>
             murilo scorsato
@@ -36,7 +65,6 @@
         </div>
     </div>
 </div>
-
 
 
 {% endblock %}
