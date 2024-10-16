@@ -1,0 +1,77 @@
+{% extends 'base_galeria.html' %}
+{% load static %}
+{% block titulo %}Minhas Fotos - GramLineWeb{% endblock %}
+{% block head %}
+    <!-- Link para o Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <link rel="stylesheet" href="{% static 'plataforma/css/plataforma.css' %}">
+{% endblock %}
+
+{% block body %}
+<!-- Título fixo -->
+
+<h1 class="fixed-header">
+    <a href="{% url 'plataforma' %}"><button type="button" class="btn btn-outline-light">Início</button></a>
+    <a href="{% url 'galeria' %}"><button type="button" class="btn btn-outline-primary">Galeria</button></a>
+    MINHAS FOTOS
+</h1>
+<BR><BR><BR><br>
+   <form action="{% url 'minhas_fotos' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <!-- Ícone substituindo o botão padrão -->
+    <label for="img_publico" style="cursor: pointer;">
+        <i class="fa-solid fa-images fa-5x"></i> Adicionar mídia (pública)
+    </label>
+
+    <!-- Campo de upload oculto -->
+    <input type="file" id="img_publico" name="img_publico" style="display: none;" onchange="updateLabel(this)">
+
+    <input type="text" name="descricao" placeholder="Descrição da foto">
+    <input type="submit" value="Confirme a imagem e a descrição">
+</form>
+
+<script>
+    // Atualiza o texto do ícone quando uma imagem é selecionada
+    function updateLabel(input) {
+        if (input.files && input.files[0]) {
+            document.querySelector('label[for="img_publico"]').innerHTML = input.files[0].name;
+        }
+    }
+</script>
+<hr>
+  <div class="message">
+                {% if messages %}
+                {% for message in messages %}
+                <div class="alert {{ message.tags }}">
+                    {{ message }}
+                </div>
+                {% endfor %}
+                {% endif %}
+            </div>
+
+
+
+
+
+
+
+
+       <!-- Coluna direita fixa no desktop, mas relativa no celular -->
+        <div class="col-md-6 fixed-column bg-black"><br><br><br><br><br>
+            murilo scorsato
+
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
+
+
+
+
+
+
+
