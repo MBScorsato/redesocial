@@ -1,0 +1,16 @@
+.galeria {
+    display: block;  /* Define o layout em bloco para que as imagens fiquem uma embaixo da outra */
+}
+
+.foto-item {
+    width: 355px;  /* Define a largura fixa da imagem */
+    height: 280px; /* Define a altura fixa da imagem */
+    margin-bottom: 20px; /* Adiciona um espaço entre as imagens */
+    overflow: hidden; /* Esconde qualquer excesso da imagem */
+}
+
+.foto-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Faz a imagem cobrir todo o contêiner */
+}

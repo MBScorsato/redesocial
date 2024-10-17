@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
     <link rel="stylesheet" href="{% static 'plataforma/css/plataforma.css' %}">
+    <link rel="stylesheet" href="{% static 'galeria/css/galeria.css' %}">
 {% endblock %}
 
 {% block body %}
@@ -41,21 +42,26 @@
     }
 </script>
 <hr>
-  <div class="message">
+            <div class="message">
                 {% if messages %}
                 {% for message in messages %}
-                <div class="alert {{ message.tags }}">
-                    {{ message }}
-                </div>
+                    <div class="alert {{ message.tags }}">
+                        {{ message }}
+                    </div>
                 {% endfor %}
                 {% endif %}
             </div>
 
+     <div class="galeria">
+        {% for foto in fotos_usuario %}
+            <div class="foto-item">
+                <img src="{{ foto.img_pub.url }}" alt="Descrição: {{ foto.descricao }}">
 
-
-
-
-
+            </div><p>{{ foto.descricao }} <button>...</button></p><hr><br>
+        {% empty %}
+            <p>Você ainda não tem fotos publicadas.</p>
+        {% endfor %}
+    </div>
 
 
        <!-- Coluna direita fixa no desktop, mas relativa no celular -->
@@ -68,10 +74,3 @@
 
 
 {% endblock %}
-
-
-
-
-
-
-

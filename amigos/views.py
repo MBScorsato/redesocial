@@ -1,9 +1,11 @@
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.shortcuts import render
 from perfil.models import ImagemPerfil
 from django.db.models import Q
 
 
+@login_required(login_url='/auth/cadastro')
 def amigos(request):
     nome = request.user.username
     usuarios = User.objects.all()
