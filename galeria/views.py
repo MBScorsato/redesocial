@@ -26,23 +26,27 @@ def minhas_fotos(request):
     if request.method == 'GET':
         # Filtrar as imagens do usuário logado e ordenar da mais recente para a mais antiga
         fotos_usuario = ImgPublica.objects.filter(usuario=usuario).order_by('-id')
-
         return render(request, 'minhas_fotos.html', {'fotos_usuario': fotos_usuario})
 
     if request.method == 'POST':
-        img_publico = request.FILES.get('img_publico')
+        img_publico = request.FILES.get('img_publico')  # Verifica se uma imagem foi enviada
         descricao = request.POST.get('descricao')
 
-        try:
-            # Cria uma instância de ImgPublica associada ao usuário logado
-            arquivo = ImgPublica(descricao=descricao, img_pub=img_publico, usuario=usuario)
-            arquivo.save()
-            messages.success(request, 'Imagem publicada com sucesso!')
+        if not descricao:
+            descricao = 'Minha Foto :)'
 
-        except Exception as e:
-            messages.error(request, f'Ocorreu um erro ao tentar publicar a imagem: {e}')
+        if not img_publico:
+            # Se o usuário não selecionar uma imagem, envia uma mensagem de erro
+            messages.error(request, 'Por favor, selecione uma imagem para publicar.')
+        else:
+            try:
+                # Cria uma instância de ImgPublica associada ao usuário logado
+                arquivo = ImgPublica(descricao=descricao, img_pub=img_publico, usuario=usuario)
+                arquivo.save()
+                messages.success(request, 'Imagem publicada com sucesso!')
+            except Exception as e:
+                messages.error(request, f'Ocorreu um erro ao tentar publicar a imagem: {e}')
 
         # Após o POST, recarrega as imagens do usuário na ordem da mais recente para a mais antiga
         fotos_usuario = ImgPublica.objects.filter(usuario=usuario).order_by('-id')
         return render(request, 'minhas_fotos.html', {'fotos_usuario': fotos_usuario})
-

@@ -14,7 +14,7 @@
 
 <h1 class="fixed-header">
     <a href="{% url 'plataforma' %}"><button type="button" class="btn btn-outline-light">Início</button></a>
-    <a href="{% url 'galeria' %}"><button type="button" class="btn btn-outline-primary">Galeria</button></a>
+    <a href="{% url 'galeria' %}"><button type="button" class="btn btn-outline-primary">Voltar</button></a>
     MINHAS FOTOS
 </h1>
 <BR><BR><BR><br>
@@ -52,17 +52,24 @@
                 {% endif %}
             </div>
 
-     <div class="galeria">
-        {% for foto in fotos_usuario %}
-            <div class="foto-item">
+<div class="galeria">
+    {% for foto in fotos_usuario %}
+        <div class="foto-item">
+            {% if foto.img_pub %}
                 <img src="{{ foto.img_pub.url }}" alt="Descrição: {{ foto.descricao }}">
-
-            </div><p>{{ foto.descricao }} <button>...</button></p><hr><br>
-        {% empty %}
-            <p>Você ainda não tem fotos publicadas.</p>
-        {% endfor %}
-    </div>
-
+            {% else %}
+                <p>Sem imagem disponível.</p>
+            {% endif %}
+        </div>
+        <p>{{ foto.descricao }}
+           <button class="btn-discreto">Editar</button>
+        </p>
+        <hr><br>
+    {% empty %}
+        <p>Você ainda não tem fotos publicadas.</p>
+    {% endfor %}
+</div>
+<br><br>
 
        <!-- Coluna direita fixa no desktop, mas relativa no celular -->
         <div class="col-md-6 fixed-column bg-black"><br><br><br><br><br>
