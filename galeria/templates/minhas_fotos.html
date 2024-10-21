@@ -17,8 +17,10 @@
     <a href="{% url 'galeria' %}"><button type="button" class="btn btn-outline-primary">Voltar</button></a>
     MINHAS FOTOS
 </h1>
-<BR><BR><BR><br>
-   <form action="{% url 'minhas_fotos' %}" method="POST" enctype="multipart/form-data">
+<br><br><br><br>
+
+<!-- Formulário para adicionar nova imagem -->
+<form action="{% url 'minhas_fotos' %}" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
 
     <!-- Ícone substituindo o botão padrão -->
@@ -28,7 +30,6 @@
 
     <!-- Campo de upload oculto -->
     <input type="file" id="img_publico" name="img_publico" style="display: none;" onchange="updateLabel(this)">
-
     <input type="text" name="descricao" placeholder="Descrição da foto">
     <input type="submit" value="Confirme a imagem e a descrição">
 </form>
@@ -41,17 +42,21 @@
         }
     }
 </script>
-<hr>
-            <div class="message">
-                {% if messages %}
-                {% for message in messages %}
-                    <div class="alert {{ message.tags }}">
-                        {{ message }}
-                    </div>
-                {% endfor %}
-                {% endif %}
-            </div>
 
+<hr>
+
+<!-- Exibe mensagens de sucesso ou erro -->
+<div class="message">
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert {{ message.tags }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+</div>
+
+<!-- Galeria de fotos do usuário -->
 <div class="galeria">
     {% for foto in fotos_usuario %}
         <div class="foto-item">
@@ -61,46 +66,55 @@
                 <p>Sem imagem disponível.</p>
             {% endif %}
         </div>
-        <p>            <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-    Editar
-</button>
- {{ foto.descricao }}
 
+        <p>
+            <!-- Botão para abrir o modal de edição de legenda -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalEditar{{ foto.id }}">
+                Editar legenda
+            </button>
+            {{ foto.descricao }}
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Editar/Excluir</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-          <textarea cols="43" rows="3" name="texto"></textarea>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">X</button>
-          <button type="button" class="btn btn-primary">Salve</button>
-          <button type="button" class="btn btn-danger">Excluir</button>
-      </div>
-    </div>
-  </div>
-</div>
+            <!-- Modal para editar a legenda -->
+            <div class="modal fade" id="modalEditar{{ foto.id }}" tabindex="-1" aria-labelledby="modalLabel{{ foto.id }}" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="modalLabel{{ foto.id }}">Editar Legenda</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    <form action="{% url 'editar_foto' foto.id %}" method="POST">
+                      {% csrf_token %}
+                      <textarea cols="43" rows="3" name="descricao">{{ foto.descricao }}</textarea>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Salvar</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Formulário para excluir a foto -->
+            <form action="{% url 'excluir_foto' foto.id %}" method="POST" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">Excluir</button>
+            </form>
         </p>
+
         <hr><br>
     {% empty %}
         <p>Você ainda não tem fotos publicadas.</p>
     {% endfor %}
 </div>
+
 <br><br>
 
-       <!-- Coluna direita fixa no desktop, mas relativa no celular -->
-        <div class="col-md-6 fixed-column bg-black"><br><br><br><br><br>
-            murilo scorsato
-
-        </div>
-    </div>
+<!-- Coluna direita fixa no desktop, mas relativa no celular -->
+<div class="col-md-6 fixed-column bg-black">
+    <br><br><br><br><br>
+    murilo scorsato00
 </div>
 
 
