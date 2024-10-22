@@ -77,4 +77,4 @@ def excluir_foto(request, foto_id):
         messages.success(request, 'Imagem excluída com sucesso!')
         return redirect('minhas_fotos')
 
-    return render(request, 'confirmar_exclusao.html', {'foto': foto})
+    return render(request, 'minhas_fotos.html')
